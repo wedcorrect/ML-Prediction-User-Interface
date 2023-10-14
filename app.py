@@ -53,9 +53,12 @@ def main(league_list):
     if 'stage' not in st.session_state:
         st.session_state.stage = 0
 
-    for league in league_list:
-        leagues_matches = get_league_matches(league)
-        form(leagues_matches, league)
+    if len(league_list) > 0:
+        for league in league_list:
+            leagues_matches = get_league_matches(league)
+            form(leagues_matches, league)
+    else:
+        st.write(f"There are no match predictions for today. Please check back tomorrow.")
  
 if __name__ == '__main__':
     main(leagues)
